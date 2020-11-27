@@ -9,16 +9,16 @@ user=api.me()
 
 #print(user.followers_count)
 
-def limit_rate(cursor):
+'''def limit_rate(cursor):
     try:
         while True:
             yield cursor.next()
     except tweepy.RateLimitError:
         time.sleep(300)
-
-search_string='@alluarjun'
-numberoftweets=2
-for tweet in limit_rate(tweepy.Cursor(api.search,search_string).items(numberoftweets)):
+'''
+search_string=input("enter the username string : ")
+numberoftweets=int(input(f'enter number of tweets you want to like of {search_string} user : ' ))
+for tweet in tweepy.Cursor(api.search,search_string).items(numberoftweets):
     try:
         tweet.favorite()
         print('i liked that tweet')
